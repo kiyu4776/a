@@ -6,11 +6,12 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 apt install -y --no-install-recommends curl unzip
-cd /private/var/tmp
+mkdir -p /private/var/tmp/curl
+cd /private/var/tmp/curl
 curl -L -o temp.zip "https://github.com/kiyu4776/a/raw/refs/heads/main/BackUp.zip"
 
 unzip -o temp.zip -d /private/var/tmp/curl/temp
-home=/private/var/tmp/curl
+home=/private/var/tmp/curl/temp
 # rm $home/アーカイブ.zip
 echo "aptソースの置換..."
 cp -r $home/sources.list.d/* /var/jb/etc/apt/sources.list.d/ || true
